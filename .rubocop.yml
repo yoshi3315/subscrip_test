@@ -1,0 +1,66 @@
+require:
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-rspec
+
+inherit_from: .rubocop_todo.yml
+
+Rails:
+  Enabled: true
+
+# 日本語でのコメントを許可
+AsciiComments:
+  Enabled: false
+
+# 日本語での RSpec context を許可
+RSpec/ContextWording:
+  Enabled: false
+
+# モジュール名::クラス名の定義を許可
+ClassAndModuleChildren:
+  Enabled: false
+
+# コメントなしクラスを許可
+Documentation:
+  Enabled: false
+
+# RSpec のエクスペクテーションが長くても許可
+RSpec/ExampleLength:
+  Enabled: false
+
+# RSpec のネストが深くても許可
+RSpec/NestedGroups:
+  Enabled: false
+
+# 1行が長くても許可
+Metrics/LineLength:
+  Enabled: false
+
+# ABC サイズは Spec 除外し、許容値を 20 に設定
+Metrics/AbcSize:
+  Max: 20
+  Exclude:
+    - 'spec/**/**/*'
+
+# メソッド行数は Spec ディレクトリを除外
+Metrics/MethodLength:
+  Exclude:
+    - 'spec/**/**/*'
+
+# ブロック行数は Spec 自動生成された annotate の rake ファイルのみ除外
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/**/*'
+    - 'lib/tasks/auto_annotate_models.rake'
+
+AllCops:
+  TargetRubyVersion: 2.6.4
+  Exclude:
+    - 'db/schema.rb'
+    - 'config/**/*'
+    - 'script/**/*'
+    - 'bundle_bin/*'
+    - 'bin/*'
+    - 'node_modules/**/*'
+    - 'vendor/**/*'
+    - !ruby/regexp /old_and_unused\.rb$/
