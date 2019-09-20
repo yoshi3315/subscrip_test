@@ -29,6 +29,7 @@ group :development, :test do
   gem 'pry-stack_explorer'
   gem 'rails-flog', require: 'flog'
   gem 'rspec-rails'
+  gem 'rspec_junit_formatter'
 end
 
 group :development do
